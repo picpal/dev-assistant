@@ -1,0 +1,65 @@
+{
+  "name": "dev-assistant",
+  "version": "1.0.0",
+  "description": "AI-powered development assistant combining structured feature workflows with tactical development tools for Java/Spring Boot, Python, and TypeScript/React",
+  "author": {
+    "name": "Your Team",
+    "email": "team@example.com"
+  },
+  "license": "MIT",
+  "engines": {
+    "claude": ">=1.0.0"
+  },
+  "capabilities": {
+    "agents": [
+      "code-explorer",
+      "code-architect",
+      "code-reviewer",
+      "debugger",
+      "tester",
+      "doc-reference",
+      "code-quality",
+      "performance-analyzer"
+    ],
+    "skills": [
+      "debugging-patterns",
+      "test-automation",
+      "documentation-guides",
+      "quality-standards",
+      "performance-benchmarks",
+      "architecture-patterns"
+    ],
+    "commands": [
+      "build",
+      "debug",
+      "test",
+      "doc",
+      "quality",
+      "perf"
+    ]
+  },
+  "languages": ["java", "python", "typescript", "javascript"],
+  "frameworks": [
+    "spring-boot",
+    "gradle",
+    "maven",
+    "junit",
+    "flask",
+    "fastapi",
+    "pytest",
+    "react",
+    "jest",
+    "next.js"
+  ],
+  "keywords": [
+    "development",
+    "workflow",
+    "feature-development",
+    "debugging",
+    "testing",
+    "code-quality",
+    "performance",
+    "multi-language",
+    "architecture"
+  ]
+}

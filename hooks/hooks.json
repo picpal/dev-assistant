@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/auto-format.sh \"${TOOL_USE_PARAMS_file_path}\"",
+            "timeout": 30,
+            "description": "Auto-format code after edits"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash.*rm -rf",
+        "hooks": [
+          {
+            "type": "warn",
+            "message": "⚠️  WARNING: Dangerous 'rm -rf' command detected. This will permanently delete files. Are you sure?"
+          }
+        ]
+      }
+    ]
+  }
+}
