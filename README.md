@@ -17,6 +17,46 @@
 
 ---
 
+## 설치 방법
+
+### 마켓플레이스에서 설치 (권장)
+
+1. **마켓플레이스 추가**:
+```bash
+/plugin marketplace add picpal/dev-assistant
+```
+
+2. **플러그인 설치**:
+```bash
+/plugin install dev-assistant@dev-assistant
+```
+
+3. **Claude Code 재시작**하여 플러그인 로드
+
+### 로컬 개발/테스트
+
+```bash
+# 로컬 디렉토리에서 마켓플레이스 추가
+/plugin marketplace add /path/to/dev-assistant
+
+# 플러그인 설치
+/plugin install dev-assistant@dev-assistant-marketplace
+```
+
+### 설치 확인
+
+```bash
+# 플러그인 목록 확인
+/plugin list
+
+# 마켓플레이스 목록 확인
+/plugin marketplace list
+```
+
+설치가 완료되면 `/build`, `/debug`, `/test` 등의 명령어를 바로 사용할 수 있습니다!
+
+---
+
 ## 주요 기능
 
 ### 🏗️ 메인 워크플로우: `/build`
@@ -154,51 +194,9 @@
 
 ---
 
-## 설치
+## 고급 설정
 
-### 사전 요구사항
-
-- **Claude Code CLI** (버전 ≥1.0.0)
-- **Git** (클론 및 업데이트용)
-- **언어별 포맷터** (선택사항이지만 권장):
-  - Java: `google-java-format` 또는 Gradle Spotless
-  - Python: `black`, `isort`
-  - TypeScript: `prettier`
-
-### 플러그인 설치
-
-```bash
-# 플러그인을 홈 디렉토리에 클론
-cd ~
-git clone <repository-url> dev-assistant
-
-# Claude가 플러그인을 사용하도록 설정
-mkdir -p ~/.claude
-cat >> ~/.claude/settings.json << 'EOF'
-{
-  "pluginDirectories": [
-    "~/dev-assistant"
-  ]
-}
-EOF
-
-# Claude Code 재시작
-```
-
-**`~/.claude/settings.json`이 이미 존재하는 경우:**
-
-파일을 수동으로 편집하여 `pluginDirectories` 배열에 `~/dev-assistant`를 추가:
-
-```json
-{
-  "pluginDirectories": [
-    "~/dev-assistant",
-    "~/other-plugin"
-  ]
-}
-```
-
-자세한 설치 지침, 문제 해결 및 팀 설정은 [INSTALLATION.md](./INSTALLATION.md)를 참조하세요.
+자세한 설치 지침, 문제 해결, 팀 설정 및 커스터마이징 방법은 [INSTALLATION.md](./INSTALLATION.md)를 참조하세요.
 
 ---
 
