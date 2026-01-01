@@ -1,27 +1,27 @@
-# dev-assistant Installation Guide
+# dev-assistant 설치 가이드
 
-Complete installation and setup guide for the dev-assistant Claude Code plugin.
+dev-assistant Claude Code 플러그인의 완전한 설치 및 설정 가이드입니다.
 
 ---
 
-## Prerequisites
+## 사전 요구사항
 
-### Required
+### 필수
 
-- **Claude Code CLI** (version ≥1.0.0)
-- **Git** (for cloning and updates)
+- **Claude Code CLI** (버전 ≥1.0.0)
+- **Git** (클론 및 업데이트용)
 
-### Recommended Formatters
+### 권장 포맷터
 
-For auto-format hooks to work, install language-specific formatters:
+자동 포맷 훅이 작동하려면 언어별 포맷터를 설치하세요:
 
 #### Java
 ```bash
-# Option 1: google-java-format (recommended)
+# 옵션 1: google-java-format (권장)
 brew install google-java-format
 
-# Option 2: Use Gradle Spotless (project-specific)
-# Add to build.gradle:
+# 옵션 2: Gradle Spotless 사용 (프로젝트별)
+# build.gradle에 추가:
 plugins {
     id 'com.diffplug.spotless' version '6.x.x'
 }
@@ -29,37 +29,37 @@ plugins {
 
 #### Python
 ```bash
-# Install black and isort
+# black과 isort 설치
 pip install black isort
 
-# Or using pipx (isolated installation)
+# 또는 pipx 사용 (격리된 설치)
 pipx install black
 pipx install isort
 ```
 
 #### TypeScript/JavaScript
 ```bash
-# Install prettier globally
+# prettier 전역 설치
 npm install -g prettier
 
-# Or install locally in your project
+# 또는 프로젝트에 로컬 설치
 npm install --save-dev prettier
 ```
 
 ---
 
-## Installation Methods
+## 설치 방법
 
-### Method 1: Permanent Installation (Recommended)
+### 방법 1: 영구 설치 (권장)
 
-Install once, use in all Claude sessions.
+한 번 설치하면 모든 Claude 세션에서 사용할 수 있습니다.
 
 ```bash
-# 1. Clone the plugin to your home directory
+# 1. 플러그인을 홈 디렉토리에 클론
 cd ~
 git clone <repository-url> dev-assistant
 
-# 2. Configure Claude Code to load the plugin
+# 2. 플러그인을 로드하도록 Claude Code 구성
 mkdir -p ~/.claude
 cat >> ~/.claude/settings.json << 'EOF'
 {
@@ -69,12 +69,12 @@ cat >> ~/.claude/settings.json << 'EOF'
 }
 EOF
 
-# 3. Restart Claude Code
+# 3. Claude Code 재시작
 ```
 
-**If settings.json already exists:**
+**settings.json이 이미 존재하는 경우:**
 
-Edit `~/.claude/settings.json` manually and add the plugin directory:
+`~/.claude/settings.json`을 수동으로 편집하여 플러그인 디렉토리를 추가하세요:
 
 ```json
 {
@@ -85,28 +85,28 @@ Edit `~/.claude/settings.json` manually and add the plugin directory:
 }
 ```
 
-### Method 2: Temporary Load
+### 방법 2: 임시 로드
 
-Load the plugin for a specific session only.
+특정 세션에서만 플러그인을 로드합니다.
 
 ```bash
-# Clone the plugin
+# 플러그인 클론
 git clone <repository-url> ~/dev-assistant
 
-# Run Claude with the plugin
+# 플러그인과 함께 Claude 실행
 claude --plugin-dir ~/dev-assistant
 ```
 
 ---
 
-## Verification
+## 검증
 
-### 1. Check Plugin Loaded
+### 1. 플러그인 로드 확인
 
-After restarting Claude Code, verify the plugin is loaded:
+Claude Code를 재시작한 후 플러그인이 로드되었는지 확인하세요:
 
 ```bash
-# The following commands should be available:
+# 다음 명령어들이 사용 가능해야 합니다:
 /build
 /debug
 /test
@@ -115,38 +115,38 @@ After restarting Claude Code, verify the plugin is loaded:
 /perf
 ```
 
-### 2. Verify Auto-Format
+### 2. 자동 포맷 검증
 
-Create a test file and edit it:
+테스트 파일을 생성하고 편집하세요:
 
 ```bash
-# Python test
+# Python 테스트
 echo "def test():x=1" > test.py
-# Edit the file - it should auto-format if black is installed
+# 파일 편집 - black이 설치되어 있으면 자동 포맷됩니다
 
-# JavaScript test
+# JavaScript 테스트
 echo "const x={a:1,b:2}" > test.js
-# Edit the file - it should auto-format if prettier is installed
+# 파일 편집 - prettier가 설치되어 있으면 자동 포맷됩니다
 ```
 
-### 3. Test Utility Scripts
+### 3. 유틸리티 스크립트 테스트
 
 ```bash
-# Test language detection
+# 언어 감지 테스트
 cd ~/dev-assistant
 ./utils/language-detection.sh .
 
-# Test framework detection
+# 프레임워크 감지 테스트
 ./utils/framework-detection.sh .
 ```
 
 ---
 
-## Configuration
+## 구성
 
-### Formatter Configuration Files
+### 포맷터 구성 파일
 
-The auto-format scripts respect existing formatter configurations:
+자동 포맷 스크립트는 기존 포맷터 구성을 존중합니다:
 
 #### Python - `pyproject.toml`
 ```toml
@@ -179,39 +179,39 @@ spotless {
 }
 ```
 
-### Disable Auto-Format (Optional)
+### 자동 포맷 비활성화 (선택사항)
 
-To temporarily disable auto-format:
+자동 포맷을 일시적으로 비활성화하려면:
 
 ```bash
-# Edit hooks.json
+# hooks.json 편집
 vim ~/dev-assistant/hooks/hooks.json
 
-# Comment out the PostToolUse section
+# PostToolUse 섹션 주석 처리
 ```
 
 ---
 
-## Team Installation
+## 팀 설치
 
-### For Team Leaders: Share the Plugin
+### 팀 리더용: 플러그인 공유
 
 ```bash
-# 1. Push plugin to team repository
+# 1. 플러그인을 팀 저장소에 푸시
 cd ~/dev-assistant
 git remote add origin <your-team-repo>
 git push -u origin main
 
-# 2. Share installation instructions with team
+# 2. 팀과 설치 지침 공유
 ```
 
-### For Team Members: Install Team Plugin
+### 팀 멤버용: 팀 플러그인 설치
 
 ```bash
-# 1. Clone team plugin
+# 1. 팀 플러그인 클론
 git clone <team-repo-url> ~/dev-assistant
 
-# 2. Configure Claude
+# 2. Claude 구성
 mkdir -p ~/.claude
 cat >> ~/.claude/settings.json << 'EOF'
 {
@@ -221,52 +221,52 @@ cat >> ~/.claude/settings.json << 'EOF'
 }
 EOF
 
-# 3. Restart Claude Code
+# 3. Claude Code 재시작
 ```
 
-### Updating Team Plugin
+### 팀 플러그인 업데이트
 
 ```bash
-# Pull latest updates
+# 최신 업데이트 가져오기
 cd ~/dev-assistant
 git pull
 
-# Restart Claude Code to apply changes
+# 변경사항 적용을 위해 Claude Code 재시작
 ```
 
 ---
 
-## Troubleshooting
+## 문제 해결
 
-### Plugin Not Loading
+### 플러그인이 로드되지 않음
 
-**Issue**: Commands like `/build`, `/debug` not available
+**문제**: `/build`, `/debug` 같은 명령어를 사용할 수 없음
 
-**Solutions**:
+**해결방법**:
 
-1. Check plugin directory path:
+1. 플러그인 디렉토리 경로 확인:
 ```bash
 cat ~/.claude/settings.json
-# Verify pluginDirectories includes ~/dev-assistant
+# pluginDirectories에 ~/dev-assistant가 포함되어 있는지 확인
 ```
 
-2. Check plugin.json exists:
+2. plugin.json 존재 확인:
 ```bash
 ls -la ~/dev-assistant/.claude-plugin/plugin.json
 ```
 
-3. Try loading manually:
+3. 수동 로드 시도:
 ```bash
 claude --plugin-dir ~/dev-assistant
 ```
 
-### Auto-Format Not Working
+### 자동 포맷이 작동하지 않음
 
-**Issue**: Files not formatting after Edit/Write
+**문제**: Edit/Write 후 파일이 포맷되지 않음
 
-**Solutions**:
+**해결방법**:
 
-1. Check formatter installation:
+1. 포맷터 설치 확인:
 ```bash
 # Java
 which google-java-format
@@ -279,18 +279,18 @@ which isort
 which prettier
 ```
 
-2. Install missing formatters (see Prerequisites)
+2. 누락된 포맷터 설치 (사전 요구사항 참조)
 
-3. Check script permissions:
+3. 스크립트 권한 확인:
 ```bash
 ls -l ~/dev-assistant/hooks/scripts/auto-format.sh
-# Should show: -rwxr-xr-x
+# 다음과 같이 표시되어야 함: -rwxr-xr-x
 
-# If not:
+# 그렇지 않은 경우:
 chmod +x ~/dev-assistant/hooks/scripts/auto-format.sh
 ```
 
-4. Test formatter manually:
+4. 포맷터를 수동으로 테스트:
 ```bash
 # Python
 black test.py
@@ -302,42 +302,42 @@ prettier --write test.ts
 google-java-format --replace Test.java
 ```
 
-### Utility Scripts Not Working
+### 유틸리티 스크립트가 작동하지 않음
 
-**Issue**: Language/framework detection fails
+**문제**: 언어/프레임워크 감지 실패
 
-**Solutions**:
+**해결방법**:
 
-1. Check script permissions:
+1. 스크립트 권한 확인:
 ```bash
 chmod +x ~/dev-assistant/utils/*.sh
 ```
 
-2. Run scripts manually to see errors:
+2. 스크립트를 수동으로 실행하여 오류 확인:
 ```bash
 cd ~/dev-assistant
 ./utils/language-detection.sh .
 ./utils/framework-detection.sh .
 ```
 
-### Git Clone Fails
+### Git 클론 실패
 
-**Issue**: Permission denied or repository not found
+**문제**: 권한 거부 또는 저장소를 찾을 수 없음
 
-**Solutions**:
+**해결방법**:
 
-1. Check repository URL
-2. Verify Git credentials/SSH keys
-3. Try HTTPS instead of SSH:
+1. 저장소 URL 확인
+2. Git 자격 증명/SSH 키 확인
+3. SSH 대신 HTTPS 시도:
 ```bash
 git clone https://github.com/user/dev-assistant.git
 ```
 
 ---
 
-## Multiple Plugins
+## 여러 플러그인 사용
 
-You can use dev-assistant alongside other Claude Code plugins:
+dev-assistant를 다른 Claude Code 플러그인과 함께 사용할 수 있습니다:
 
 ```json
 {
@@ -349,31 +349,31 @@ You can use dev-assistant alongside other Claude Code plugins:
 }
 ```
 
-**Note**: If plugins have overlapping commands, the last one in the list takes precedence.
+**참고**: 플러그인에 중복되는 명령어가 있는 경우, 목록의 마지막 플러그인이 우선합니다.
 
 ---
 
-## Uninstallation
+## 제거
 
-### Remove Plugin
+### 플러그인 제거
 
 ```bash
-# 1. Remove from Claude settings
-# Edit ~/.claude/settings.json and remove ~/dev-assistant from pluginDirectories
+# 1. Claude 설정에서 제거
+# ~/.claude/settings.json을 편집하고 pluginDirectories에서 ~/dev-assistant 제거
 
-# 2. Delete plugin directory (optional)
+# 2. 플러그인 디렉토리 삭제 (선택사항)
 rm -rf ~/dev-assistant
 
-# 3. Restart Claude Code
+# 3. Claude Code 재시작
 ```
 
 ---
 
-## Advanced Setup
+## 고급 설정
 
-### Project-Specific Plugin Configuration
+### 프로젝트별 플러그인 구성
 
-Create `.claude/settings.local.json` in your project root:
+프로젝트 루트에 `.claude/settings.local.json`을 생성하세요:
 
 ```json
 {
@@ -383,66 +383,66 @@ Create `.claude/settings.local.json` in your project root:
 }
 ```
 
-This overrides global settings for that project only.
+이것은 해당 프로젝트에 대해서만 전역 설정을 재정의합니다.
 
-### Custom Utility Scripts
+### 커스텀 유틸리티 스크립트
 
-You can customize utility scripts for your team's needs:
+팀의 필요에 맞게 유틸리티 스크립트를 커스터마이징할 수 있습니다:
 
 ```bash
-# Edit language detection to add new languages
+# 새로운 언어를 추가하기 위해 언어 감지 편집
 vim ~/dev-assistant/utils/language-detection.sh
 
-# Edit framework detection to add custom frameworks
+# 커스텀 프레임워크를 추가하기 위해 프레임워크 감지 편집
 vim ~/dev-assistant/utils/framework-detection.sh
 ```
 
-After editing, commit and push to team repository.
+편집 후 팀 저장소에 커밋하고 푸시하세요.
 
 ---
 
-## System Requirements
+## 시스템 요구사항
 
-### Operating Systems
-- macOS (tested)
-- Linux (should work)
-- Windows with WSL (should work)
+### 운영 체제
+- macOS (테스트됨)
+- Linux (작동할 것으로 예상)
+- Windows with WSL (작동할 것으로 예상)
 
-### Disk Space
-- ~10 MB for plugin files
-- Additional space for formatter tools (varies)
+### 디스크 공간
+- 플러그인 파일용 ~10 MB
+- 포맷터 도구용 추가 공간 (다양함)
 
-### Network
-- Required for initial Git clone
-- Required for `/doc` command (online documentation search)
-- Not required for offline plugin functionality
-
----
-
-## Getting Help
-
-### Documentation
-- Main README: [README.md](./README.md)
-- Usage examples: [EXAMPLES.md](./EXAMPLES.md) (coming soon)
-- Architecture docs: See plan file
-
-### Support
-- Report issues on GitHub Issues
-- Check existing issues for solutions
-- Contact plugin maintainer (see plugin.json)
+### 네트워크
+- 초기 Git 클론에 필요
+- `/doc` 명령어에 필요 (온라인 문서 검색)
+- 오프라인 플러그인 기능에는 필요하지 않음
 
 ---
 
-## Next Steps
+## 도움 받기
 
-After installation:
+### 문서
+- 메인 README: [README.md](./README.md)
+- 사용 예제: [EXAMPLES.md](./EXAMPLES.md) (출시 예정)
+- 아키텍처 문서: plan 파일 참조
 
-1. **Try the quick start examples** in [README.md](./README.md)
-2. **Run `/build` to see the full workflow**
-3. **Test individual commands**: `/debug`, `/test`, `/doc`, `/quality`, `/perf`
-4. **Customize formatter configs** for your team's code style
-5. **Share with your team** using the Team Installation guide
+### 지원
+- GitHub Issues에 문제 보고
+- 해결책을 위해 기존 이슈 확인
+- 플러그인 관리자에게 문의 (plugin.json 참조)
 
 ---
 
-Happy coding with dev-assistant! ⚡
+## 다음 단계
+
+설치 후:
+
+1. **[README.md](./README.md)의 빠른 시작 예제 시도**
+2. **전체 워크플로우를 확인하기 위해 `/build` 실행**
+3. **개별 명령어 테스트**: `/debug`, `/test`, `/doc`, `/quality`, `/perf`
+4. **팀의 코드 스타일에 맞게 포맷터 구성 커스터마이징**
+5. **팀 설치 가이드를 사용하여 팀과 공유**
+
+---
+
+dev-assistant와 함께 즐거운 코딩 되세요! ⚡

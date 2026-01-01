@@ -1,15 +1,15 @@
 # dev-assistant
 
-> AI-powered development assistant combining structured feature workflows with tactical development tools for Java/Spring Boot, Python, and TypeScript/React
+> Java/Spring Boot, Python, TypeScript/React를 위한 구조화된 기능 개발 워크플로우와 전술적 개발 도구를 결합한 AI 기반 개발 어시스턴트
 
-## Overview
+## 개요
 
-**dev-assistant** is a comprehensive Claude Code plugin that combines:
-- **Structured 7-phase feature development workflow** with parallel agent execution and user approval gates
-- **Quick tactical commands** for debugging, testing, documentation, quality analysis, and performance profiling
-- **Multi-language support** with automatic detection and language-specific patterns
+**dev-assistant**는 다음을 결합한 포괄적인 Claude Code 플러그인입니다:
+- **구조화된 7단계 기능 개발 워크플로우** (병렬 agent 실행 및 사용자 승인 게이트 포함)
+- **빠른 전술적 명령어들** (디버깅, 테스팅, 문서화, 품질 분석, 성능 프로파일링)
+- **멀티언어 지원** (자동 감지 및 언어별 패턴 적용)
 
-### Supported Languages & Frameworks
+### 지원 언어 & 프레임워크
 
 - **Java**: Spring Boot, Gradle, Maven, JUnit 5
 - **Python**: Flask, FastAPI, Django, pytest
@@ -17,162 +17,162 @@
 
 ---
 
-## Features
+## 주요 기능
 
-### 🏗️ Main Workflow: `/build`
+### 🏗️ 메인 워크플로우: `/build`
 
-A comprehensive 7-phase workflow for feature development:
+기능 개발을 위한 포괄적인 7단계 워크플로우:
 
 ```
-1. Discovery → 2. Exploration → 3. Questions → 4. Architecture → 5. Implementation → 6. Review → 7. Summary
-              (2-3 agents)      (Gate #1)    (3 agents)       (Gate #3)       (3 agents)
-                                              (Gate #2)                        (Gate #4)
+1. 발견 → 2. 탐색 → 3. 질문 → 4. 아키텍처 → 5. 구현 → 6. 리뷰 → 7. 요약
+         (2-3 agents)  (게이트 #1)  (3 agents)    (게이트 #3)  (3 agents)
+                                     (게이트 #2)                (게이트 #4)
 ```
 
-#### The 7 Phases:
+#### 7단계 상세:
 
-1. **Discovery** - Clarify requirements and detect project language
-2. **Exploration** - Parallel code analysis with 2-3 code-explorer agents
-3. **Questions** - Fill gaps with clarifying questions (**User Approval Gate #1**)
-4. **Architecture** - Design 3 approaches in parallel: Minimal/Clean/Pragmatic (**User Selection Gate #2**)
-5. **Implementation** - Build the feature with auto-formatting (**User Approval Gate #3**)
-6. **Review** - Multi-perspective code review with confidence ≥80 filtering (**User Decision Gate #4**)
-7. **Summary** - Document what was built and next steps
+1. **발견 (Discovery)** - 요구사항 명확화 및 프로젝트 언어 감지
+2. **탐색 (Exploration)** - 2-3개 code-explorer agents를 병렬로 실행하여 코드베이스 분석
+3. **질문 (Questions)** - 명확화 질문으로 빈틈 채우기 (**사용자 승인 게이트 #1**)
+4. **아키텍처 (Architecture)** - 3가지 접근법을 병렬로 설계: Minimal/Clean/Pragmatic (**사용자 선택 게이트 #2**)
+5. **구현 (Implementation)** - 자동 포맷팅과 함께 기능 구축 (**사용자 승인 게이트 #3**)
+6. **리뷰 (Review)** - 신뢰도 ≥80 필터링을 적용한 다관점 코드 리뷰 (**사용자 결정 게이트 #4**)
+7. **요약 (Summary)** - 구축한 내용과 다음 단계 문서화
 
-#### Key Capabilities:
+#### 핵심 역량:
 
-- ⚡ **Parallel agent execution**: 2.5x-3x faster in Phases 2, 4, 6
-- 🎯 **Confidence-based filtering**: Only show findings with ≥80% confidence (reduces noise)
-- 🚪 **4 user approval gates**: Careful, deliberate development with user control
-- 🎨 **Auto-format hooks**: Automatic formatting for Java, Python, TypeScript
-- 🌍 **Multi-language aware**: Detects and adapts to project language
-- 🏛️ **3 architectural approaches**: Choose between Minimal (fast), Clean (maintainable), or Pragmatic (balanced)
+- ⚡ **병렬 agent 실행**: 2, 4, 6단계에서 2.5x-3x 더 빠름
+- 🎯 **신뢰도 기반 필터링**: 신뢰도 ≥80%인 발견사항만 표시 (노이즈 감소)
+- 🚪 **4개의 사용자 승인 게이트**: 사용자 제어를 통한 신중하고 의도적인 개발
+- 🎨 **자동 포맷 훅**: Java, Python, TypeScript 자동 포맷팅
+- 🌍 **멀티언어 인식**: 프로젝트 언어 감지 및 적응
+- 🏛️ **3가지 아키텍처 접근법**: Minimal (빠름), Clean (유지보수성), Pragmatic (균형) 중 선택
 
 ---
 
-### ⚡ Quick Commands
+### ⚡ 빠른 명령어들
 
-Perfect for daily development tasks without the full workflow overhead.
+전체 워크플로우 오버헤드 없이 일상적인 개발 작업에 완벽합니다.
 
-#### `/debug` - Error Analysis & Fixing
+#### `/debug` - 에러 분석 & 수정
 ```bash
 /debug "NullPointerException in UserService.java:42"
-/debug <paste stack trace>
+/debug <스택 트레이스 붙여넣기>
 ```
-- Multi-language error analysis (Java/Python/TypeScript)
-- Stack trace interpretation with file:line references
-- Root cause identification
-- Immediate fix suggestions with before/after code
-- Prevention strategies
+- 멀티언어 에러 분석 (Java/Python/TypeScript)
+- 파일:라인 참조와 함께 스택 트레이스 해석
+- 근본 원인 식별
+- 수정 전/후 코드와 함께 즉시 수정 제안
+- 예방 전략
 
-#### `/test` - Test Generation & Execution
+#### `/test` - 테스트 생성 & 실행
 ```bash
 /test UserService.java
 /test LoginForm.tsx
 ```
-- Framework-aware test generation (JUnit 5, pytest, Jest)
-- AAA pattern (Arrange-Act-Assert)
-- Mocking and fixtures
-- Coverage reporting
-- Run tests automatically
+- 프레임워크 인식 테스트 생성 (JUnit 5, pytest, Jest)
+- AAA 패턴 (Arrange-Act-Assert)
+- 모킹과 픽스처
+- 커버리지 리포팅
+- 테스트 자동 실행
 
-#### `/doc` - Documentation Search
+#### `/doc` - 문서 검색
 ```bash
 /doc "Spring Boot connection pooling"
 /doc "React useEffect cleanup"
 ```
-- Local documentation search (README, docstrings)
-- Online official docs (spring.io, python.org, react.dev)
-- API signatures and examples
-- Fast results (haiku model for speed)
+- 로컬 문서 검색 (README, docstring)
+- 온라인 공식 문서 (spring.io, python.org, react.dev)
+- API 시그니처와 예제
+- 빠른 결과 (속도를 위한 haiku 모델)
 
-#### `/quality` - Code Quality Analysis
+#### `/quality` - 코드 품질 분석
 ```bash
 /quality src/services/
 /quality UserController.java
 ```
-- SOLID principle checking
-- Code smell detection
-- Cyclomatic complexity calculation
-- Refactoring suggestions
-- Prioritized improvement roadmap
+- SOLID 원칙 검사
+- 코드 스멜 감지
+- 순환 복잡도 계산
+- 리팩토링 제안
+- 우선순위가 정해진 개선 로드맵
 
-#### `/perf` - Performance Profiling
+#### `/perf` - 성능 프로파일링
 ```bash
 /perf database queries
 /perf React component rendering
 ```
-- Language-specific profiling (JVM, cProfile, React DevTools)
-- Bottleneck identification (N+1 queries, re-renders, memory leaks)
-- Optimization suggestions with impact estimates
-- Monitoring metrics recommendations
+- 언어별 프로파일링 (JVM, cProfile, React DevTools)
+- 병목 지점 식별 (N+1 쿼리, 재렌더링, 메모리 누수)
+- 영향도 추정과 함께 최적화 제안
+- 모니터링 메트릭 권장사항
 
 ---
 
-## Architecture
+## 아키텍처
 
-### 8 Specialized Agents
+### 8개의 전문 Agents
 
-#### Workflow Agents (Parallelized for Speed)
-- **code-explorer** - Codebase discovery and pattern recognition
-  - Launched 2-3 in parallel during Phase 2
-  - Returns 5-10 key files to read
-  - Language-specific exploration patterns
+#### 워크플로우 Agents (속도를 위한 병렬화)
+- **code-explorer** - 코드베이스 발견 및 패턴 인식
+  - 2단계에서 2-3개 병렬 실행
+  - 읽어야 할 핵심 파일 5-10개 반환
+  - 언어별 탐색 패턴
 
-- **code-architect** - Multi-approach architecture design
-  - Launched 3 in parallel during Phase 4 (Minimal/Clean/Pragmatic)
-  - Provides implementation blueprints
-  - Trade-off analysis for each approach
+- **code-architect** - 다중 접근법 아키텍처 설계
+  - 4단계에서 3개 병렬 실행 (Minimal/Clean/Pragmatic)
+  - 구현 청사진 제공
+  - 각 접근법의 트레이드오프 분석
 
-- **code-reviewer** - Quality review with confidence scoring
-  - Launched 3 in parallel during Phase 6 (Simplicity/Bugs/Conventions)
-  - Confidence-based filtering (≥80 only)
-  - Multi-perspective analysis
+- **code-reviewer** - 신뢰도 점수를 포함한 품질 리뷰
+  - 6단계에서 3개 병렬 실행 (단순성/버그/규칙)
+  - 신뢰도 기반 필터링 (≥80만)
+  - 다관점 분석
 
-#### Tactical Agents (Quick Single-Instance Execution)
-- **debugger** - Error analysis and fixing for Java/Python/TypeScript
-- **tester** - Test automation and generation
-- **doc-reference** - Documentation search (uses haiku for speed)
-- **code-quality** - Maintainability and SOLID analysis
-- **performance-analyzer** - Performance profiling and optimization
+#### 전술적 Agents (빠른 단일 인스턴스 실행)
+- **debugger** - Java/Python/TypeScript 에러 분석 및 수정
+- **tester** - 테스트 자동화 및 생성
+- **doc-reference** - 문서 검색 (속도를 위해 haiku 사용)
+- **code-quality** - 유지보수성 및 SOLID 분석
+- **performance-analyzer** - 성능 프로파일링 및 최적화
 
-### 6 Skills (Knowledge Bases)
+### 6개의 Skills (지식 베이스)
 
-Comprehensive reference material for all agents:
+모든 agents를 위한 포괄적인 참조 자료:
 
-- **`architecture-patterns`** - Design approaches (Minimal/Clean/Pragmatic), trade-off analysis, multi-language patterns
-- **`debugging-patterns`** - Multi-language error patterns and debugging techniques
-- **`test-automation`** - Testing framework best practices (JUnit/pytest/Jest)
-- **`documentation-guides`** - Documentation standards (Javadoc/Sphinx/JSDoc)
-- **`quality-standards`** - SOLID principles and best practices
-- **`performance-benchmarks`** - Optimization techniques and profiling
+- **`architecture-patterns`** - 설계 접근법 (Minimal/Clean/Pragmatic), 트레이드오프 분석, 멀티언어 패턴
+- **`debugging-patterns`** - 멀티언어 에러 패턴 및 디버깅 기법
+- **`test-automation`** - 테스팅 프레임워크 모범 사례 (JUnit/pytest/Jest)
+- **`documentation-guides`** - 문서화 표준 (Javadoc/Sphinx/JSDoc)
+- **`quality-standards`** - SOLID 원칙 및 모범 사례
+- **`performance-benchmarks`** - 최적화 기법 및 프로파일링
 
-### 6 Commands
+### 6개의 Commands
 
-- **1 Main Workflow**: `/build` (7-phase feature development)
-- **5 Quick Commands**: `/debug`, `/test`, `/doc`, `/quality`, `/perf`
+- **1개 메인 워크플로우**: `/build` (7단계 기능 개발)
+- **5개 빠른 명령어**: `/debug`, `/test`, `/doc`, `/quality`, `/perf`
 
 ---
 
-## Installation
+## 설치
 
-### Prerequisites
+### 사전 요구사항
 
-- **Claude Code CLI** (version ≥1.0.0)
-- **Git** (for cloning and updates)
-- **Language-specific formatters** (optional but recommended):
-  - Java: `google-java-format` or Gradle Spotless
+- **Claude Code CLI** (버전 ≥1.0.0)
+- **Git** (클론 및 업데이트용)
+- **언어별 포맷터** (선택사항이지만 권장):
+  - Java: `google-java-format` 또는 Gradle Spotless
   - Python: `black`, `isort`
   - TypeScript: `prettier`
 
-### Install Plugin
+### 플러그인 설치
 
 ```bash
-# Clone the plugin to your home directory
+# 플러그인을 홈 디렉토리에 클론
 cd ~
 git clone <repository-url> dev-assistant
 
-# Configure Claude to use the plugin
+# Claude가 플러그인을 사용하도록 설정
 mkdir -p ~/.claude
 cat >> ~/.claude/settings.json << 'EOF'
 {
@@ -182,12 +182,12 @@ cat >> ~/.claude/settings.json << 'EOF'
 }
 EOF
 
-# Restart Claude Code
+# Claude Code 재시작
 ```
 
-**If `~/.claude/settings.json` already exists:**
+**`~/.claude/settings.json`이 이미 존재하는 경우:**
 
-Edit the file manually and add `~/dev-assistant` to the `pluginDirectories` array:
+파일을 수동으로 편집하여 `pluginDirectories` 배열에 `~/dev-assistant`를 추가:
 
 ```json
 {
@@ -198,315 +198,315 @@ Edit the file manually and add `~/dev-assistant` to the `pluginDirectories` arra
 }
 ```
 
-For detailed installation instructions, troubleshooting, and team setup, see [INSTALLATION.md](./INSTALLATION.md).
+자세한 설치 지침, 문제 해결 및 팀 설정은 [INSTALLATION.md](./INSTALLATION.md)를 참조하세요.
 
 ---
 
-## Quick Start
+## 빠른 시작
 
-### Example 1: Building a New Feature
-
-```bash
-/build Add user authentication with JWT tokens
-```
-
-**The workflow will:**
-1. ✅ Detect your project language (Java/Python/TypeScript)
-2. ⚡ Launch 2-3 code-explorer agents in parallel to understand your codebase
-3. ❓ Ask clarifying questions about auth requirements (wait for your answers)
-4. 🏛️ Present 3 architecture approaches:
-   - **Minimal**: Quick JWT implementation with session storage (2-3 hours)
-   - **Clean**: Full auth service with strategy pattern (2-3 days)
-   - **Pragmatic**: Balanced approach with easy extensibility (1-2 days)
-5. 🛠️ Implement your chosen approach with auto-formatting
-6. 🔍 Review with 3 parallel reviewers (Simplicity/Bugs/Conventions, confidence ≥80)
-7. 📄 Summarize changes and suggest next steps
-
-### Example 2: Quick Debugging
+### 예제 1: 새 기능 구축
 
 ```bash
-/debug "NullPointerException at UserService.java:42"
+/build JWT 토큰을 사용한 사용자 인증 추가
 ```
 
-**You'll get:**
-- Root cause analysis (e.g., "Optional.get() called on empty Optional")
-- Immediate fix with before/after code
-- Prevention strategy (e.g., "Use Optional.map() or orElseThrow()")
-- Recommended tests to add
+**워크플로우 진행:**
+1. ✅ 프로젝트 언어 감지 (Java/Python/TypeScript)
+2. ⚡ 코드베이스 이해를 위해 2-3개 code-explorer agents를 병렬로 실행
+3. ❓ 인증 요구사항에 대한 명확화 질문 (답변 대기)
+4. 🏛️ 3가지 아키텍처 접근법 제시:
+   - **Minimal**: 세션 스토리지를 사용한 빠른 JWT 구현 (2-3시간)
+   - **Clean**: 전략 패턴을 적용한 완전한 인증 서비스 (2-3일)
+   - **Pragmatic**: 쉬운 확장성을 가진 균형잡힌 접근법 (1-2일)
+5. 🛠️ 선택한 접근법으로 자동 포맷팅과 함께 구현
+6. 🔍  3개 병렬 리뷰어로 리뷰 (단순성/버그/규칙, 신뢰도 ≥80)
+7. 📄 변경사항 요약 및 다음 단계 제안
 
-### Example 3: Generate Tests
+### 예제 2: 빠른 디버깅
+
+```bash
+/debug "UserService.java:42에서 NullPointerException"
+```
+
+**결과:**
+- 근본 원인 분석 (예: "빈 Optional에서 Optional.get() 호출")
+- 수정 전/후 코드와 함께 즉시 수정
+- 예방 전략 (예: "Optional.map() 또는 orElseThrow() 사용")
+- 추가할 테스트 권장사항
+
+### 예제 3: 테스트 생성
 
 ```bash
 /test src/services/UserService.java
 ```
 
-**You'll get:**
-- JUnit 5 tests with @Test annotations
-- Mocking setup with Mockito
-- AAA pattern (Arrange-Act-Assert)
-- Edge case coverage
-- Ready to run tests
+**결과:**
+- @Test 어노테이션이 있는 JUnit 5 테스트
+- Mockito를 사용한 모킹 설정
+- AAA 패턴 (Arrange-Act-Assert)
+- 엣지 케이스 커버리지
+- 바로 실행 가능한 테스트
 
 ---
 
-## When to Use What?
+## 언제 무엇을 사용할까?
 
-### Use `/build` workflow when:
-- ✅ Building complete new features
-- ✅ Initializing greenfield projects
-- ✅ Complex changes requiring architectural decisions
-- ✅ You want structured guidance and code review
-- ✅ You need to evaluate multiple approaches (Minimal/Clean/Pragmatic)
+### `/build` 워크플로우를 사용할 때:
+- ✅ 완전한 새 기능 구축
+- ✅ 그린필드 프로젝트 초기화
+- ✅ 아키텍처 결정이 필요한 복잡한 변경
+- ✅ 구조화된 가이드와 코드 리뷰가 필요할 때
+- ✅ 여러 접근법 평가가 필요할 때 (Minimal/Clean/Pragmatic)
 
-### Use quick commands when:
-- ⚡ Debugging specific errors (`/debug`)
-- ⚡ Adding tests to existing code (`/test`)
-- ⚡ Looking up documentation (`/doc`)
-- ⚡ Analyzing specific modules (`/quality`)
-- ⚡ Profiling specific performance issues (`/perf`)
+### 빠른 명령어를 사용할 때:
+- ⚡ 특정 에러 디버깅 (`/debug`)
+- ⚡ 기존 코드에 테스트 추가 (`/test`)
+- ⚡ 문서 검색 (`/doc`)
+- ⚡ 특정 모듈 분석 (`/quality`)
+- ⚡ 특정 성능 이슈 프로파일링 (`/perf`)
 
-**Rule of thumb**: Use `/build` for strategic work, quick commands for tactical work.
+**경험 법칙**: 전략적 작업에는 `/build`, 전술적 작업에는 빠른 명령어 사용.
 
 ---
 
-## Key Features
+## 핵심 기능
 
-### 🌍 Multi-Language Support
+### 🌍 멀티언어 지원
 
-Automatically detects and adapts to your project:
+프로젝트를 자동으로 감지하고 적응:
 
 **Java/Spring Boot:**
-- Layered architecture (Controller → Service → Repository)
-- Spring annotations and dependency injection
-- JUnit 5 + Mockito tests
-- Google Java Format or Spotless
+- 계층형 아키텍처 (Controller → Service → Repository)
+- Spring 어노테이션 및 의존성 주입
+- JUnit 5 + Mockito 테스트
+- Google Java Format 또는 Spotless
 
 **Python:**
-- FastAPI/Flask/Django patterns
-- Type hints and Pydantic validation
-- pytest with fixtures
-- Black + isort formatting
+- FastAPI/Flask/Django 패턴
+- 타입 힌트 및 Pydantic 검증
+- 픽스처를 사용한 pytest
+- Black + isort 포맷팅
 
 **TypeScript/React:**
-- Functional components with hooks
-- TypeScript strict mode
+- 훅을 사용한 함수형 컴포넌트
+- TypeScript strict 모드
 - Jest + React Testing Library
-- Prettier formatting
+- Prettier 포맷팅
 
-### ⚡ Parallel Agent Execution
+### ⚡ 병렬 Agent 실행
 
-Phases 2, 4, and 6 run multiple agents simultaneously:
-
-```
-Phase 2: 2-3 code-explorer agents    → 2.5x faster
-Phase 4: 3 code-architect agents     → 3x faster
-Phase 6: 3 code-reviewer agents      → 3x faster
-```
-
-### 🎯 Confidence-Based Filtering
-
-Code reviewers score findings 0-100. Only issues with confidence ≥80 are shown:
+2, 4, 6단계에서 여러 agents를 동시에 실행:
 
 ```
-0-25:  Not confident / False positive
-25-50: Might be real / Minor nitpick
-50-75: Real but not critical
-75-90: Highly confident / Important
-90-100: Absolutely certain / Critical
+2단계: 2-3개 code-explorer agents    → 2.5배 빠름
+4단계: 3개 code-architect agents     → 3배 빠름
+6단계: 3개 code-reviewer agents      → 3배 빠름
 ```
 
-This reduces noise and focuses on real problems.
+### 🎯 신뢰도 기반 필터링
 
-### 🚪 User Approval Gates
+코드 리뷰어가 발견사항을 0-100으로 점수 매김. 신뢰도 ≥80인 이슈만 표시:
 
-4 critical decision points where you stay in control:
+```
+0-25:  확신 없음 / 거짓 양성
+25-50: 실제일 수 있음 / 사소한 지적
+50-75: 실제이지만 중요하지 않음
+75-90: 매우 확신 / 중요
+90-100: 절대 확실 / 치명적
+```
 
-1. **Gate #1 (Phase 3)**: Answer clarifying questions
-2. **Gate #2 (Phase 4)**: Select architecture approach (Minimal/Clean/Pragmatic)
-3. **Gate #3 (Phase 5)**: Approve implementation start
-4. **Gate #4 (Phase 6)**: Decide on review findings (fix now/later/proceed)
+노이즈를 줄이고 실제 문제에 집중합니다.
 
-### 🎨 Auto-Format Hooks
+### 🚪 사용자 승인 게이트
 
-Code is automatically formatted after Edit/Write operations:
+당신이 제어권을 유지하는 4개의 중요한 결정 지점:
 
-- **Java**: Spotless or google-java-format
+1. **게이트 #1 (3단계)**: 명확화 질문에 답변
+2. **게이트 #2 (4단계)**: 아키텍처 접근법 선택 (Minimal/Clean/Pragmatic)
+3. **게이트 #3 (5단계)**: 구현 시작 승인
+4. **게이트 #4 (6단계)**: 리뷰 발견사항에 대한 결정 (지금 수정/나중에/진행)
+
+### 🎨 자동 포맷 훅
+
+Edit/Write 작업 후 코드가 자동으로 포맷팅됨:
+
+- **Java**: Spotless 또는 google-java-format
 - **Python**: black + isort
 - **TypeScript**: prettier
 
-Configure formatters via project config files (`.prettierrc`, `pyproject.toml`, etc.).
+프로젝트 설정 파일(`.prettierrc`, `pyproject.toml` 등)을 통해 포맷터를 구성하세요.
 
 ---
 
-## Templates
+## 템플릿
 
-### Greenfield Project Templates
+### 그린필드 프로젝트 템플릿
 
-Start new projects with best practices:
+모범 사례로 새 프로젝트 시작:
 
-- **Java/Spring Boot**: Gradle, JPA, Security, Flyway migrations
-- **Python/FastAPI**: Poetry, SQLAlchemy, Alembic, async support
-- **TypeScript/React**: Vite, React Router, TypeScript strict mode
+- **Java/Spring Boot**: Gradle, JPA, Security, Flyway 마이그레이션
+- **Python/FastAPI**: Poetry, SQLAlchemy, Alembic, async 지원
+- **TypeScript/React**: Vite, React Router, TypeScript strict 모드
 
-See `templates/greenfield/` for project structures.
+프로젝트 구조는 `templates/greenfield/`를 참조하세요.
 
-### Feature Templates
+### 기능 템플릿
 
-Common feature patterns with multi-language examples:
+멀티언어 예제를 포함한 일반적인 기능 패턴:
 
-- CRUD operations
-- Authentication & Authorization
-- File upload & storage
-- Pagination & filtering
-- Background jobs
-- Real-time updates (WebSocket/SSE)
-- Search functionality
-- Caching layer
-- Rate limiting
-- Audit logging
+- CRUD 작업
+- 인증 및 권한 부여
+- 파일 업로드 및 저장
+- 페이지네이션 및 필터링
+- 백그라운드 작업
+- 실시간 업데이트 (WebSocket/SSE)
+- 검색 기능
+- 캐싱 레이어
+- 속도 제한
+- 감사 로깅
 
-See `templates/feature-templates/` for implementation guides.
-
----
-
-## Development Status
-
-### ✅ Completed (v1.0)
-
-- ✅ **Week 1**: Core infrastructure (hooks, utils, plugin config)
-- ✅ **Week 2-3**: Workflow agents (code-explorer, code-architect, code-reviewer)
-- ✅ **Week 4**: Tactical agents (debugger, tester, doc-reference, code-quality, performance-analyzer)
-- ✅ **Week 5**: Commands (`/build` workflow + 5 tactical commands)
-- ✅ **Week 6**: Templates (greenfield + feature templates)
-
-### 🚧 Ongoing
-
-- 🚧 **Week 7**: Integration testing and real-world validation
-- 🚧 **Week 8**: Extended documentation and examples
-
-### 📊 Statistics
-
-- **46 files** created
-- **11,435 lines** of code
-- **8 specialized agents** (3 workflow + 5 tactical)
-- **6 commands** (1 main + 5 quick)
-- **6 comprehensive skills**
-- **3 languages** fully supported
+구현 가이드는 `templates/feature-templates/`를 참조하세요.
 
 ---
 
-## Key Differentiators
+## 개발 상태
 
-### vs feature-dev Plugin
+### ✅ 완료 (v1.0)
 
-- ✅ **Multi-language support**: Java/Python/TypeScript (feature-dev is language-agnostic)
-- ✅ **Quick tactical commands**: 5 fast commands for daily tasks
-- ✅ **Auto-format hooks**: Automatic code formatting
-- ✅ **Skills system**: Organized knowledge bases
-- ✅ **Feature templates**: Reusable patterns for common features
+- ✅ **Week 1**: 핵심 인프라 (훅, 유틸리티, 플러그인 설정)
+- ✅ **Week 2-3**: 워크플로우 agents (code-explorer, code-architect, code-reviewer)
+- ✅ **Week 4**: 전술적 agents (debugger, tester, doc-reference, code-quality, performance-analyzer)
+- ✅ **Week 5**: Commands (`/build` 워크플로우 + 5개 전술적 명령어)
+- ✅ **Week 6**: 템플릿 (그린필드 + 기능 템플릿)
+
+### 🚧 진행 중
+
+- 🚧 **Week 7**: 통합 테스팅 및 실제 검증
+- 🚧 **Week 8**: 확장된 문서화 및 예제
+
+### 📊 통계
+
+- **46개 파일** 생성
+- **11,435줄** 코드
+- **8개 전문 agents** (3개 워크플로우 + 5개 전술)
+- **6개 commands** (1개 메인 + 5개 빠른)
+- **6개 포괄적 skills**
+- **3개 언어** 완전 지원
+
+---
+
+## 주요 차별화 요소
+
+### vs feature-dev 플러그인
+
+- ✅ **멀티언어 지원**: Java/Python/TypeScript (feature-dev는 언어 무관)
+- ✅ **빠른 전술적 명령어**: 일상 작업을 위한 5개 빠른 명령어
+- ✅ **자동 포맷 훅**: 자동 코드 포맷팅
+- ✅ **스킬 시스템**: 체계화된 지식 베이스
+- ✅ **기능 템플릿**: 일반 기능을 위한 재사용 가능한 패턴
 
 ### vs chatops-plugin
 
-- ✅ **Structured 7-phase workflow**: Systematic feature development
-- ✅ **Parallel agent execution**: 2.5x-3x faster in key phases
-- ✅ **User approval gates**: 4 decision points for careful development
-- ✅ **Greenfield templates**: Start new projects with best practices
-- ✅ **Confidence-based filtering**: ≥80 threshold reduces review noise
+- ✅ **구조화된 7단계 워크플로우**: 체계적인 기능 개발
+- ✅ **병렬 agent 실행**: 핵심 단계에서 2.5x-3x 빠름
+- ✅ **사용자 승인 게이트**: 신중한 개발을 위한 4개 결정 지점
+- ✅ **그린필드 템플릿**: 모범 사례로 새 프로젝트 시작
+- ✅ **신뢰도 기반 필터링**: ≥80 임계값으로 리뷰 노이즈 감소
 
-### Best of Both Worlds
+### 두 세계의 장점
 
-dev-assistant combines:
-- **feature-dev's** systematic workflow and multi-perspective analysis
-- **chatops-plugin's** multi-language expertise and tactical tools
-- **New innovations**: Parallel execution, confidence filtering, 3-approach architecture
+dev-assistant는 다음을 결합:
+- **feature-dev의** 체계적인 워크플로우와 다관점 분석
+- **chatops-plugin의** 멀티언어 전문성과 전술적 도구
+- **새로운 혁신**: 병렬 실행, 신뢰도 필터링, 3가지 접근법 아키텍처
 
 ---
 
-## Examples
+## 예제
 
-### Example Workflow: Adding User Management
+### 예제 워크플로우: 사용자 관리 추가
 
 ```bash
-/build Add user CRUD operations with role-based permissions
+/build 역할 기반 권한이 있는 사용자 CRUD 작업 추가
 ```
 
-**Phase 1 (Discovery)**: Detects Java/Spring Boot project
+**1단계 (발견)**: Java/Spring Boot 프로젝트 감지
 
-**Phase 2 (Exploration)**: Launches 3 explorers in parallel:
-- Explorer 1: Finds similar CRUD features (Product, Order)
-- Explorer 2: Maps security and auth patterns
-- Explorer 3: Analyzes testing conventions
-- **Returns**: 8 key files to read
+**2단계 (탐색)**: 3개 탐색기를 병렬로 실행:
+- 탐색기 1: 유사한 CRUD 기능 찾기 (Product, Order)
+- 탐색기 2: 보안 및 인증 패턴 매핑
+- 탐색기 3: 테스팅 규칙 분석
+- **반환**: 읽어야 할 핵심 파일 8개
 
-**Phase 3 (Questions)**: Asks you:
-- Should we reuse existing User entity or create new?
-- What roles do we need? (ADMIN, USER, GUEST?)
-- RESTful API or GraphQL?
-- Pagination needed?
+**3단계 (질문)**: 다음을 질문:
+- 기존 User 엔티티를 재사용할까요, 새로 만들까요?
+- 어떤 역할이 필요한가요? (ADMIN, USER, GUEST?)
+- RESTful API인가요, GraphQL인가요?
+- 페이지네이션이 필요한가요?
 
-**Phase 4 (Architecture)**: Presents 3 approaches:
-- **Minimal**: Extend UserController, add CRUD endpoints (3 hours)
-- **Clean**: New UserService + DTOs + validation + tests (2 days)
-- **Pragmatic**: Service layer + basic DTOs + integration tests (1 day) ⭐ Recommended
+**4단계 (아키텍처)**: 3가지 접근법 제시:
+- **Minimal**: UserController 확장, CRUD 엔드포인트 추가 (3시간)
+- **Clean**: 새 UserService + DTO + 검증 + 테스트 (2일)
+- **Pragmatic**: 서비스 레이어 + 기본 DTO + 통합 테스트 (1일) ⭐ 권장
 
-**Phase 5 (Implementation)**: You choose Pragmatic, it builds:
-- `UserService.java` with business logic
-- `CreateUserRequest.java`, `UserResponse.java` DTOs
-- Updated `UserController.java` with new endpoints
-- `UserServiceTest.java` with mocking
-- Auto-formatted with Spotless
+**5단계 (구현)**: Pragmatic 선택, 다음 구축:
+- 비즈니스 로직을 포함한 `UserService.java`
+- `CreateUserRequest.java`, `UserResponse.java` DTO
+- 새 엔드포인트가 추가된 `UserController.java`
+- 모킹을 사용한 `UserServiceTest.java`
+- Spotless로 자동 포맷팅
 
-**Phase 6 (Review)**: 3 reviewers find:
-- **Simplicity**: No issues ≥80 confidence ✅
-- **Bugs**: Missing null check in update (confidence 90) ⚠️
-- **Conventions**: Should use `@Valid` on DTOs (confidence 85) ⚠️
-- **You decide**: Fix now → both issues resolved
+**6단계 (리뷰)**: 3개 리뷰어가 발견:
+- **단순성**: 신뢰도 ≥80 이슈 없음 ✅
+- **버그**: update에서 null 체크 누락 (신뢰도 90) ⚠️
+- **규칙**: DTO에 `@Valid` 사용해야 함 (신뢰도 85) ⚠️
+- **사용자 결정**: 지금 수정 → 두 이슈 모두 해결
 
-**Phase 7 (Summary)**: Documents:
-- Created 4 files, modified 2
-- Added user CRUD with role validation
-- Pragmatic approach chosen
-- Next steps: Add integration tests, update API docs
-
----
-
-## Contributing
-
-Contributions welcome! This plugin combines patterns from feature-dev and chatops-plugin.
-
-### Areas for Contribution
-
-- Additional language support (Go, Rust, etc.)
-- More feature templates
-- Enhanced skills content
-- Integration tests
-- Documentation and examples
+**7단계 (요약)**: 문서화:
+- 4개 파일 생성, 2개 수정
+- 역할 검증을 포함한 사용자 CRUD 추가
+- Pragmatic 접근법 선택
+- 다음 단계: 통합 테스트 추가, API 문서 업데이트
 
 ---
 
-## License
+## 기여
+
+기여를 환영합니다! 이 플러그인은 feature-dev와 chatops-plugin의 패턴을 결합합니다.
+
+### 기여 가능 영역
+
+- 추가 언어 지원 (Go, Rust 등)
+- 더 많은 기능 템플릿
+- 향상된 스킬 컨텐츠
+- 통합 테스트
+- 문서화 및 예제
+
+---
+
+## 라이선스
 
 MIT License
 
 ---
 
-## Support
+## 지원
 
-- **Issues**: [GitHub Issues](https://github.com/your-repo/dev-assistant/issues)
-- **Documentation**: See `INSTALLATION.md` and files in this repository
-- **Templates**: See `templates/` directory
-- **Skills Reference**: See `skills/` directory
+- **이슈**: [GitHub Issues](https://github.com/your-repo/dev-assistant/issues)
+- **문서**: `INSTALLATION.md` 및 이 저장소의 파일들 참조
+- **템플릿**: `templates/` 디렉토리 참조
+- **스킬 참조**: `skills/` 디렉토리 참조
 
 ---
 
-## Credits
+## 크레딧
 
-Built with ⚡ by combining the best patterns from:
-- **feature-dev**: Systematic workflow and architecture focus
-- **chatops-plugin**: Multi-language expertise and tactical tools
+다음의 최고 패턴들을 결합하여 구축 ⚡:
+- **feature-dev**: 체계적인 워크플로우와 아키텍처 중심
+- **chatops-plugin**: 멀티언어 전문성과 전술적 도구
 
-Enhanced with:
-- Parallel agent execution
-- Confidence-based filtering
-- Multiple architectural approaches
-- Comprehensive skills system
+다음으로 강화:
+- 병렬 agent 실행
+- 신뢰도 기반 필터링
+- 다중 아키텍처 접근법
+- 포괄적인 스킬 시스템
