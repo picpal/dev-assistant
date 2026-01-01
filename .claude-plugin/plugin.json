@@ -3,54 +3,10 @@
   "version": "1.0.0",
   "description": "AI-powered development assistant combining structured feature workflows with tactical development tools for Java/Spring Boot, Python, and TypeScript/React",
   "author": {
-    "name": "Your Team",
-    "email": "team@example.com"
+    "name": "Picpal",
+    "email": "picpal@users.noreply.github.com"
   },
   "license": "MIT",
-  "engines": {
-    "claude": ">=1.0.0"
-  },
-  "capabilities": {
-    "agents": [
-      "code-explorer",
-      "code-architect",
-      "code-reviewer",
-      "debugger",
-      "tester",
-      "doc-reference",
-      "code-quality",
-      "performance-analyzer"
-    ],
-    "skills": [
-      "debugging-patterns",
-      "test-automation",
-      "documentation-guides",
-      "quality-standards",
-      "performance-benchmarks",
-      "architecture-patterns"
-    ],
-    "commands": [
-      "build",
-      "debug",
-      "test",
-      "doc",
-      "quality",
-      "perf"
-    ]
-  },
-  "languages": ["java", "python", "typescript", "javascript"],
-  "frameworks": [
-    "spring-boot",
-    "gradle",
-    "maven",
-    "junit",
-    "flask",
-    "fastapi",
-    "pytest",
-    "react",
-    "jest",
-    "next.js"
-  ],
   "keywords": [
     "development",
     "workflow",
@@ -60,6 +16,15 @@
     "code-quality",
     "performance",
     "multi-language",
-    "architecture"
-  ]
+    "architecture",
+    "java",
+    "python",
+    "typescript",
+    "javascript",
+    "spring-boot",
+    "react"
+  ],
+  "hooks": "./hooks/hooks.json",
+  "repository": "https://github.com/picpal/dev-assistant",
+  "homepage": "https://github.com/picpal/dev-assistant"
 }

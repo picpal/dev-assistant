@@ -1,0 +1,44 @@
+{
+  "name": "dev-assistant-marketplace",
+  "owner": {
+    "name": "Picpal",
+    "email": "picpal@users.noreply.github.com"
+  },
+  "metadata": {
+    "description": "AI-powered development assistant for Java/Spring Boot, Python, and TypeScript/React",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "dev-assistant",
+      "source": "./",
+      "description": "AI-powered development assistant combining structured feature workflows with tactical development tools for Java/Spring Boot, Python, and TypeScript/React",
+      "version": "1.0.0",
+      "author": {
+        "name": "Picpal",
+        "email": "picpal@users.noreply.github.com"
+      },
+      "homepage": "https://github.com/picpal/dev-assistant",
+      "repository": "https://github.com/picpal/dev-assistant",
+      "license": "MIT",
+      "keywords": [
+        "development",
+        "workflow",
+        "feature-development",
+        "debugging",
+        "testing",
+        "code-quality",
+        "performance",
+        "multi-language",
+        "architecture",
+        "java",
+        "python",
+        "typescript",
+        "javascript",
+        "spring-boot",
+        "react"
+      ],
+      "category": "productivity"
+    }
+  ]
+}
