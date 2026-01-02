@@ -24,6 +24,7 @@
     "spring-boot",
     "react"
   ],
+  "systemPrompt": "./system-prompt.md",
   "hooks": "./hooks/hooks.json",
   "repository": "https://github.com/picpal/dev-assistant",
   "homepage": "https://github.com/picpal/dev-assistant"
