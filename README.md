@@ -40,7 +40,7 @@
 /plugin marketplace add /path/to/dev-assistant
 
 # 플러그인 설치
-/plugin install dev-assistant@dev-assistant-marketplace
+/plugin install dev-assistant@dev-assistant
 ```
 
 ### 설치 확인

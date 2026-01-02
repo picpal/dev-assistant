@@ -7,7 +7,7 @@
 
 ### 1. 필수 파일 생성 및 수정
 - ✅ `.claude-plugin/marketplace.json` 생성
-  - 마켓플레이스 이름: `dev-assistant-marketplace`
+  - 마켓플레이스 이름: `dev-assistant`
   - Owner: Picpal (picpal@users.noreply.github.com)
   - Source: `"./"` (현재 디렉토리 참조)
   - Category: productivity
@@ -38,7 +38,7 @@
   ```bash
   /plugin marketplace add /Users/picpal/Desktop/workspace/dev-assistant
   ```
-  결과: `Successfully added marketplace: dev-assistant-marketplace`
+  결과: `Successfully added marketplace: dev-assistant`
 
 ---
 
@@ -56,7 +56,7 @@ dev-assistant/
 ```
 
 ### 마켓플레이스 정보
-- **이름**: dev-assistant-marketplace
+- **이름**: dev-assistant
 - **Owner**: Picpal
 - **플러그인 수**: 1개 (dev-assistant)
 - **상태**: 로컬 등록 완료 ✓
@@ -71,11 +71,11 @@ dev-assistant/
 ```bash
 /plugin marketplace list
 ```
-예상 결과: `dev-assistant-marketplace` 표시
+예상 결과: `dev-assistant` 표시
 
 #### 2. 플러그인 설치
 ```bash
-/plugin install dev-assistant@dev-assistant-marketplace
+/plugin install dev-assistant@dev-assistant
 ```
 
 #### 3. 플러그인 활성화 확인
@@ -147,7 +147,7 @@ gh release create v1.0.0 \
 #### GitHub에서 마켓플레이스 추가
 ```bash
 # 로컬 마켓플레이스 제거 (테스트 목적)
-/plugin marketplace remove dev-assistant-marketplace
+/plugin marketplace remove dev-assistant
 
 # GitHub에서 추가
 /plugin marketplace add picpal/dev-assistant
@@ -178,7 +178,7 @@ gh release create v1.0.0 \
 ### marketplace.json 핵심 설정
 ```json
 {
-  "name": "dev-assistant-marketplace",
+  "name": "dev-assistant",
   "owner": {
     "name": "Picpal",
     "email": "picpal@users.noreply.github.com"
@@ -250,7 +250,7 @@ gh release create v1.0.0 \
 ## 현재 할 일
 
 **즉시 진행 가능:**
-1. 플러그인 설치: `/plugin install dev-assistant@dev-assistant-marketplace`
+1. 플러그인 설치: `/plugin install dev-assistant@dev-assistant`
 2. 명령어 테스트 (6개 명령어)
 3. 문제가 없으면 GitHub에 커밋 및 푸시
 

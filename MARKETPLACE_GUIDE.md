@@ -39,7 +39,7 @@ Claude Code의 마켓플레이스는 **분산형 시스템**입니다:
 
 #### 2. 개인/팀 마켓플레이스 (사용자 추가)
 ```bash
-• dev-assistant-marketplace  ← 사용자가 직접 추가한 마켓플레이스
+• dev-assistant  ← 사용자가 직접 추가한 마켓플레이스
 ```
 - GitHub/GitLab 저장소
 - **각 사용자가 직접 추가**해야 사용 가능
@@ -93,7 +93,7 @@ GitHub 저장소              내 PC                  사용 가능
 3. **마켓플레이스 정보 파싱**
    ```json
    {
-     "name": "dev-assistant-marketplace",
+     "name": "dev-assistant",
      "owner": { ... },
      "plugins": [
        {
@@ -107,7 +107,7 @@ GitHub 저장소              내 PC                  사용 가능
 
 4. **로컬 캐시에 저장**
    ```
-   ~/.claude/marketplaces/dev-assistant-marketplace/
+   ~/.claude/marketplaces/dev-assistant/
    ```
 
 **결과:**
@@ -226,13 +226,13 @@ GitHub 저장소              내 PC                  사용 가능
 /plugin marketplace add /Users/picpal/Desktop/workspace/dev-assistant
 
 # 2. 로컬 플러그인 설치
-/plugin install dev-assistant@dev-assistant-marketplace
+/plugin install dev-assistant@dev-assistant
 
 # 3. 테스트
 /build "테스트 기능"
 
 # 4. 코드 수정 후 마켓플레이스 업데이트
-/plugin marketplace update dev-assistant-marketplace
+/plugin marketplace update dev-assistant
 ```
 
 #### 배포 단계
@@ -406,7 +406,7 @@ picpal/dev-assistant/
 ```
 ~/.claude/
 ├── marketplaces/            ← 등록된 마켓플레이스
-│   └── dev-assistant-marketplace/
+│   └── dev-assistant/
 │       └── marketplace.json (캐시)
 │
 ├── plugins/                 ← 설치된 플러그인
@@ -428,7 +428,7 @@ picpal/dev-assistant/
 
 ```json
 {
-  "name": "dev-assistant-marketplace",
+  "name": "dev-assistant",
   "owner": {
     "name": "Picpal",
     "email": "picpal@users.noreply.github.com"
