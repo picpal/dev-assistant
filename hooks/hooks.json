@@ -18,8 +18,9 @@
         "matcher": "Bash.*rm -rf",
         "hooks": [
           {
-            "type": "prompt",
-            "prompt": "⚠️  WARNING: Dangerous 'rm -rf' command detected. This will permanently delete files. Are you sure?"
+            "type": "command",
+            "command": "echo '⚠️  WARNING: Dangerous rm -rf command detected. This will permanently delete files. Please review carefully.' >&2; exit 2",
+            "description": "Block dangerous rm -rf commands"
           }
         ]
       }
