@@ -29,6 +29,8 @@
         "testing",
         "code-quality",
         "performance",
+        "git",
+        "version-control",
         "multi-language",
         "architecture",
         "java",

@@ -115,6 +115,31 @@ User: "React 컴포넌트 렌더링 최적화해줘"
 
 ---
 
+### 6. Git-Manager Agent
+**Subagent Type**: `git-manager`
+
+**Auto-trigger when user mentions**:
+- Git operations: commit, push, pull, merge, rebase
+- Branch management: create branch, switch branch, delete branch
+- Commit messages, conventional commits
+- Git conflicts, merge issues
+- Repository analysis, git history
+- "commit this", "create branch", "resolve conflict"
+
+**Example invocations**:
+```
+User: "커밋 메시지 만들어줘"
+→ Task(subagent_type="git-manager", prompt="Generate conventional commit message")
+
+User: "새 브랜치 만들어야 하는데"
+→ Task(subagent_type="git-manager", prompt="Create new branch for feature")
+
+User: "git conflict 해결 도와줘"
+→ Task(subagent_type="git-manager", prompt="Help resolve git conflicts")
+```
+
+---
+
 ## 🔵 Workflow Agents (Used by /build command only)
 
 These agents are invoked by the `/build` workflow command. **Do NOT** use them directly in general conversation:
@@ -137,6 +162,7 @@ Users can still use slash commands for direct invocation:
 - `/doc [topic]` - Quick documentation lookup
 - `/quality [path]` - Quick quality analysis
 - `/perf [issue]` - Quick performance analysis
+- `/git [operation]` - Git operations and management
 - `/build [feature]` - Full 7-step workflow
 
 **Slash commands are shortcuts**. You should still use agents proactively even without commands.
@@ -152,6 +178,7 @@ Users can still use slash commands for direct invocation:
 | API/framework docs | `doc-reference` | haiku |
 | Code quality/refactor | `code-quality` | sonnet |
 | Performance/optimization | `performance-analyzer` | sonnet |
+| Git operations/commits/branches | `git-manager` | sonnet |
 | Full feature development | `/build` command | - |
 
 ---
@@ -211,6 +238,13 @@ Task(subagent_type="doc-reference", model="haiku", prompt="Explain Spring Boot c
 User: "이 컨트롤러 코드 좀 이상한 것 같은데 확인해줘"
 You: [Immediately invoke]
 Task(subagent_type="code-quality", prompt="Analyze controller code quality and identify issues")
+```
+
+### Example 5: Natural Git Operations
+```
+User: "커밋 메시지 좀 만들어줘"
+You: [Immediately invoke]
+Task(subagent_type="git-manager", prompt="Generate conventional commit message for staged changes")
 ```
 
 ---
