@@ -20,27 +20,41 @@ Profiles application performance and suggests optimizations.
 
 ## Workflow
 
-1. **Identify Performance Issue**
-   - Parse performance concern from arguments
-   - Determine technology (Java/Python/React)
-   - Identify symptoms (slow, memory, CPU)
+**CRITICAL**: Immediately invoke the performance-analyzer tactical agent. DO NOT manually analyze performance yourself.
 
-2. **Invoke Performance-Analyzer Agent**
-   - Launch `performance-analyzer` sub-agent
-   - Agent profiles application
-   - Agent identifies bottlenecks
+**Actions**:
 
-3. **Analyze**
-   - JVM: Check heap, GC, N+1 queries, connection pools
-   - Python: CPU profiling, memory profiling, async issues
-   - React: Bundle size, rendering, memoization
+1. **Invoke performance-analyzer agent immediately**:
+   ```
+   Use Task tool:
+   - subagent_type: "performance-analyzer"
+   - prompt: Complete user request with performance issue
+   - description: Short summary (e.g., "Optimize database queries", "Fix memory leak")
+   ```
 
-4. **Generate Optimization Plan**
-   - Show current performance metrics
-   - Identify root cause
-   - Provide optimized code examples
-   - Estimate impact and effort
-   - Suggest monitoring metrics
+   **Examples**:
+   - User: `/perf UserService slow query` → `Task(subagent_type="performance-analyzer", prompt="Analyze and optimize slow database queries in UserService", description="Optimize database queries")`
+   - User: `/perf React component re-rendering` → `Task(subagent_type="performance-analyzer", prompt="Analyze React component re-rendering performance issues", description="Fix re-rendering")`
+   - User: `/perf memory leak` → `Task(subagent_type="performance-analyzer", prompt="Detect and fix memory leak in application", description="Fix memory leak")`
+
+2. **Agent handles everything**:
+   - Identifies performance issue and technology
+   - Profiles application (JVM/Python/React)
+   - Identifies bottlenecks
+   - Analyzes root cause
+   - Provides optimized code examples
+   - Estimates impact and effort
+   - Suggests monitoring metrics
+
+**DO NOT**:
+- ❌ Manually profile application
+- ❌ Analyze bottlenecks yourself
+- ❌ Propose optimizations directly
+
+**ALWAYS**:
+- ✅ Invoke performance-analyzer agent immediately
+- ✅ Pass complete performance issue description
+- ✅ Let agent handle profiling and optimization
 
 ## Example
 

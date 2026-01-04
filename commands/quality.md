@@ -19,28 +19,40 @@ Analyzes code maintainability, identifies code smells, and suggests refactoring.
 
 ## Workflow
 
-1. **Determine Scope**
-   - Parse target from arguments (file/directory/all)
-   - Find relevant source files
-   - Count files and lines
+**CRITICAL**: Immediately invoke the code-quality tactical agent. DO NOT manually analyze code yourself.
 
-2. **Invoke Code-Quality Agent**
-   - Launch `code-quality` sub-agent
-   - Agent scans code structure
-   - Agent identifies issues
+**Actions**:
 
-3. **Analyze**
-   - Check file/class sizes
-   - Calculate cyclomatic complexity
-   - Detect code smells
-   - Identify SOLID violations
+1. **Invoke code-quality agent immediately**:
+   ```
+   Use Task tool:
+   - subagent_type: "code-quality"
+   - prompt: Complete user request with analysis target
+   - description: Short summary (e.g., "Analyze UserService quality", "Check code quality")
+   ```
 
-4. **Generate Report**
-   - List critical issues (fix immediately)
-   - List warnings (fix soon)
-   - Provide suggestions (consider)
-   - Show before/after examples
-   - Prioritize improvements
+   **Examples**:
+   - User: `/quality UserService.java` → `Task(subagent_type="code-quality", prompt="Analyze code quality of UserService.java and suggest improvements", description="Analyze UserService quality")`
+   - User: `/quality src/services/` → `Task(subagent_type="code-quality", prompt="Analyze code quality in src/services/ directory", description="Analyze services quality")`
+   - User: `/quality` → `Task(subagent_type="code-quality", prompt="Analyze entire codebase quality and identify issues", description="Analyze codebase quality")`
+
+2. **Agent handles everything**:
+   - Determines analysis scope
+   - Scans code structure
+   - Checks file/class sizes and complexity
+   - Detects code smells and SOLID violations
+   - Generates prioritized report
+   - Shows before/after examples
+
+**DO NOT**:
+- ❌ Manually find source files
+- ❌ Calculate complexity yourself
+- ❌ Analyze code structure directly
+
+**ALWAYS**:
+- ✅ Invoke code-quality agent immediately
+- ✅ Pass complete analysis requirements
+- ✅ Let agent handle quality analysis
 
 ## Example
 

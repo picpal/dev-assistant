@@ -20,26 +20,42 @@ Searches local and online documentation for Java, Python, and TypeScript APIs.
 
 ## Workflow
 
-1. **Parse Query**
-   - Extract technology/framework
-   - Identify specific API or feature
-   - Determine detail level needed
+**CRITICAL**: Immediately invoke the doc-reference tactical agent. DO NOT manually search documentation yourself.
 
-2. **Search Locally First**
-   - Check README files
-   - Search code comments (JavaDoc, docstrings, JSDoc)
-   - Use LSP for hover information
+**Actions**:
 
-3. **Invoke Doc-Reference Agent**
-   - Launch `doc-reference` sub-agent with query
-   - Agent searches official documentation
-   - Agent extracts relevant information
+1. **Invoke doc-reference agent immediately**:
+   ```
+   Use Task tool:
+   - subagent_type: "doc-reference"
+   - model: "haiku" (for faster responses)
+   - prompt: Complete user query about API or feature
+   - description: Short summary (e.g., "Search Spring docs", "Find React API")
+   ```
 
-4. **Present Results**
-   - Show API signature
-   - Provide code examples
-   - Include configuration if needed
-   - Link to official docs
+   **Examples**:
+   - User: `/doc Spring Boot @Transactional` → `Task(subagent_type="doc-reference", model="haiku", prompt="Explain Spring Boot @Transactional annotation usage and best practices", description="Search Spring docs")`
+   - User: `/doc React useEffect` → `Task(subagent_type="doc-reference", model="haiku", prompt="Search React useEffect API documentation with examples", description="Find React API")`
+   - User: `/doc Python asyncio` → `Task(subagent_type="doc-reference", model="haiku", prompt="Find Python asyncio documentation and usage patterns", description="Search Python docs")`
+
+2. **Agent handles everything**:
+   - Parses query and extracts technology
+   - Searches local documentation first
+   - Searches official online documentation
+   - Extracts relevant information
+   - Provides API signatures and examples
+   - Links to official docs
+
+**DO NOT**:
+- ❌ Manually search README files
+- ❌ Use LSP directly
+- ❌ Search web yourself
+
+**ALWAYS**:
+- ✅ Invoke doc-reference agent immediately
+- ✅ Use model="haiku" for faster responses
+- ✅ Pass complete query
+- ✅ Let agent handle documentation search
 
 ## Example
 

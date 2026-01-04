@@ -24,29 +24,43 @@ Manages git operations with safety checks and best practices. Provides standalon
 
 ## Workflow
 
-1. **Collect Git State**
-   - Run git status to check current state
-   - Identify current branch and tracking status
-   - Check for uncommitted changes or conflicts
-   - Gather relevant context from repository
+**CRITICAL**: Immediately invoke the git-manager tactical agent. DO NOT manually execute git commands yourself.
 
-2. **Invoke Git-Manager Agent**
-   - Launch `git-manager` sub-agent with user request
-   - Agent gathers all context independently from git repository
-   - Agent analyzes state and plans operation
-   - Agent performs safety checks
+**Actions**:
 
-3. **Execute with Safety**
-   - Show commands that will be executed
-   - Execute git operations with proper checks
-   - Verify results and report outcome
-   - Provide guidance and next steps
+1. **Invoke git-manager agent immediately**:
+   ```
+   Use Task tool:
+   - subagent_type: "git-manager"
+   - prompt: Complete user request with operation and arguments
+   - description: Short summary (e.g., "Generate commit message", "Create branch")
+   ```
 
-4. **Provide Guidance**
-   - Explain what was done and why
-   - Show before/after state comparison
-   - Teach git best practices
-   - Suggest next steps or related operations
+   **Examples**:
+   - User: `/git commit` → `Task(subagent_type="git-manager", prompt="Generate conventional commit message for current staged changes", description="Generate commit message")`
+   - User: `/git branch feature/auth` → `Task(subagent_type="git-manager", prompt="Create and switch to branch feature/auth", description="Create feature branch")`
+   - User: `/git status` → `Task(subagent_type="git-manager", prompt="Provide comprehensive repository status analysis", description="Analyze git status")`
+   - User: `/git conflict` → `Task(subagent_type="git-manager", prompt="Help resolve current merge conflicts", description="Resolve conflicts")`
+
+2. **Agent handles everything**:
+   - Gathers all git repository state independently
+   - Analyzes current situation and plans operation
+   - Performs comprehensive safety checks
+   - Executes git commands with proper error handling
+   - Provides guidance and teaches best practices
+   - Shows before/after state comparison
+
+**DO NOT**:
+- ❌ Manually run git commands (git status, git diff, etc.)
+- ❌ Gather repository state yourself
+- ❌ Execute git operations directly
+- ❌ Present your own git analysis
+
+**ALWAYS**:
+- ✅ Invoke git-manager agent immediately
+- ✅ Pass complete user request as prompt
+- ✅ Let agent handle all git operations
+- ✅ Trust agent's comprehensive workflow
 
 ## Common Operations
 

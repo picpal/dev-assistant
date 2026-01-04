@@ -19,25 +19,39 @@ Analyzes errors, exceptions, and stack traces to identify root causes and sugges
 
 ## Workflow
 
-1. **Collect Error Information**
-   - Read user-provided error message or stack trace
-   - If file path provided, read the file
-   - Gather context (recent changes, related files)
+**CRITICAL**: Immediately invoke the debugger tactical agent. DO NOT manually analyze errors yourself.
 
-2. **Invoke Debugger Agent**
-   - Launch `debugger` sub-agent with error information
-   - Agent analyzes error using language-specific patterns
-   - Agent identifies root cause
+**Actions**:
 
-3. **Present Solution**
-   - Show immediate fix with code examples
-   - Explain prevention strategies
-   - Suggest tests to prevent regression
+1. **Invoke debugger agent immediately**:
+   ```
+   Use Task tool:
+   - subagent_type: "debugger"
+   - prompt: Complete user request with error description and context
+   - description: Short summary (e.g., "Debug NullPointerException", "Fix runtime error")
+   ```
 
-4. **Verify (Optional)**
-   - Offer to apply fix
-   - Run tests if available
-   - Confirm error is resolved
+   **Examples**:
+   - User: `/debug NullPointerException in UserService.java line 42` → `Task(subagent_type="debugger", prompt="Analyze NullPointerException in UserService.java:42", description="Debug NullPointerException")`
+   - User: `/debug "TypeError: Cannot read property 'id' of undefined"` → `Task(subagent_type="debugger", prompt="Debug TypeError: Cannot read property 'id' of undefined", description="Fix TypeError")`
+
+2. **Agent handles everything**:
+   - Gathers error context and stack traces
+   - Reads relevant files and code
+   - Analyzes using language-specific patterns
+   - Identifies root cause
+   - Presents solution with code examples
+   - Suggests prevention strategies and tests
+
+**DO NOT**:
+- ❌ Manually read error files
+- ❌ Analyze stack traces yourself
+- ❌ Propose fixes directly
+
+**ALWAYS**:
+- ✅ Invoke debugger agent immediately
+- ✅ Pass complete error information
+- ✅ Let agent handle root cause analysis
 
 ## Example
 
